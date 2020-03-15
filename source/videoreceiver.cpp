@@ -181,7 +181,7 @@ GstFlowReturn frame_received_callback(GstAppSink *appsink, gpointer data)
   gst_buffer_map(buffer, &map, GST_MAP_READ);
   // Convert gstreamer data to OpenCV Mat
   auto currFrame = cvMatPtr(new cv::Mat(cv::Size(width, height), CV_8UC3));
-  memcpy(currFrame->data, map.data, width * height * 3);
+  memcpy(currFrame->data, map.data, static_cast<size_t>(width * height * 3));
 
   gst_buffer_unmap(buffer, &map);
   gst_sample_unref(sample);
@@ -513,7 +513,7 @@ void GStreamerReceiver::stop()
     fDebug << "Stopping GStreamerReceiver";
     mCtx->running = false;
     if (mCtx->mainLoop != nullptr) {
-      g_main_quit(mCtx->mainLoop);
+      g_main_loop_quit(mCtx->mainLoop);
     }
     mCtx->mainLoop = nullptr;
   }

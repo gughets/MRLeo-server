@@ -46,6 +46,13 @@ public:
     File(const File &rhs) :
       id(rhs.id), type(rhs.type),
       data(rhs.data), metadata(rhs.metadata) {}
+    File& operator=(const File &rhs) {
+      data = rhs.data;
+      type = rhs.type;
+      id = rhs.id;
+      metadata = rhs.metadata;
+      return *this;
+    }
     quint32 id;
     qint16 type;
     QByteArrayPtr data;

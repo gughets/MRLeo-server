@@ -158,7 +158,7 @@ void MRServer::loadVoc(QString path, int poolSize)
       fDebug << "Place ORBvoc.txt in the executable's directory.";
       fDebug << "ORBvoc.txt can be found in /externals/ORB_SLAM2/Vocabulary/ORBvoc.txt.tar.gz";
     } else {
-      fDebug << "Vocabulary object added loaded to the pool.";
+      fDebug << "Vocabulary object added to the pool.";
     }
   }
 }
