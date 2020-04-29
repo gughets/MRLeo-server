@@ -6,11 +6,10 @@ This repository contains a Qt C++ project.
 
 Tested with Ubuntu 18.04.
 
-### Screenshot
-![Screenshot 2](../media/screenshots/screenshot1.png?raw=true)
+[Screenshot of the software in action available at GitHub.](https://github.com/johanokl/MREdge-server/blob/media/screenshots/screenshot1.png?raw=true) 
 
 ### Setting up the build environment on Ubuntu 18.04
-* Install and configure Qt. https://wiki.qt.io/Install_Qt_5_on_Ubuntu  
+* Install Qt:  
   ```sudo apt install qt5-default```  
 * Install GStreamer:  
   ```sudo apt install libgstreamer1.0-dev```  
@@ -22,10 +21,22 @@ Tested with Ubuntu 18.04.
  ```sudo apt install libeigen3-dev```
 * Install GLEW:  
  ```sudo apt install libglew-dev```
-* Install OSMesa:  
- ```sudo apt install libosmesa6-dev```
 * Install GLU:  
  ```sudo apt install libglu1-mesa-dev```
+* Install OSMesa:  
+ ```sudo apt install libosmesa6-dev```
+
+
+#### Graphics
+For compatability reasons the system supports two different methods for rendering the 3D graphics; _OSMesa_ and _Pangolin_. The default method is _Pangolin_.   
+
+* **Pangolin**  
+Download Pangolin's source code from the project's [GitHub page](https://github.com/stevenlovegrove/Pangolin).  
+Follow the instructions on that page for how to build the library. Put the created library file _libpangolin.so_ in a place where it can be found by the linker. On Ubuntu this includes the directory _/usr/lib_.
+
+* **OSMesa**  
+Configure the system to use _OSMesa_ by removing the following line in the build configuration file _MR-Leo-server.pro_ before building:  
+```CONFIG += USE_PANGOLIN```
  
 ### Building
 1. Make sure that you have the build environment set up.
